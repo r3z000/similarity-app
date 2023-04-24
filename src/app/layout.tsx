@@ -7,10 +7,10 @@ import { Toaster } from "@/components/ui/toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Similarity App",
-  description: "App for finding similarities in texts",
-};
+/* export const metadata = { */
+/*   title: "Similarity App", */
+/*   description: "App for finding similarities in texts", */
+/* }; */
 
 export default function RootLayout({
   children,
