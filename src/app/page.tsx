@@ -1,6 +1,7 @@
 import LargeHeading from "@/components/ui/LargeHeading";
 import Paragraph from "@/components/ui/Paragraph";
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -30,6 +31,18 @@ export default function Home() {
             </Link>
             .
           </Paragraph>
+          <div className="relative w-full max-w-lg lg:max-w-3xl lg:left-1/2 aspect-square lg:absolute">
+            <Image
+              priority
+              className="img-shadow"
+              quality={100}
+              style={{ objectFit: "contain" }}
+              fill
+              sizes="768"
+              src="/sticker.png"
+              alt="sticker"
+            />
+          </div>
         </div>
       </div>
     </div>
