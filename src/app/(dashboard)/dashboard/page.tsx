@@ -1,9 +1,8 @@
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { getServerSession } from "next-auth";
-/* import ApiDashboard from "@/components/ApiDashboard"; */
-/* import RequestApiKey from "@/components/RequestApiKey"; */
-
+import ApiDashboard from "@/components/ApiDashboard";
+import RequestApiKey from "@/components/RequestApiKey";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -22,12 +21,7 @@ const page = async () => {
 
   return (
     <div className="max-w-7xl mx-auto mt-16">
-      {/* {apiKey ? ( */}
-      {/*   // @ts-expect-error Server Component */}
-      {/*   <ApiDashboard /> */}
-      {/* ) : ( */}
-      {/*   <RequestApiKey /> */}
-      {/* )} */}
+      {apiKey ? <ApiDashboard /> : <RequestApiKey />}
     </div>
   );
 };
