@@ -1,7 +1,7 @@
 import { withMethods } from "@/lib/api-middlewares/with-methods";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { CreateApiData } from "@/types/api/";
+import { CreateApiData } from "@/types/api/key";
 import { nanoid } from "nanoid";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
@@ -46,7 +46,6 @@ const handler = async (
     if (error instanceof z.ZodError) {
       return res.status(400).json({ error: error.issues, createdApiKey: null });
     }
-
     return res
       .status(500)
       .json({ error: "Internal Server Error", createdApiKey: null });

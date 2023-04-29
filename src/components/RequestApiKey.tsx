@@ -1,16 +1,18 @@
 "use client";
 
-import { useState } from "react";
-import { toast } from "@/ui/toast";
 import { createApiKey } from "@/helpers/create-api-key";
-import LargeHeading from "@/ui/LargeHeading";
-import Paragraph from "@/ui/Paragraph";
 import { Key } from "lucide-react";
-import { Button } from "@/ui/Button";
-import { Input } from "@/ui/Input";
-import CopyButton from "@/components/CopyButton";
+import { FC, useState } from "react";
+import CopyButton from "./CopyButton";
+import { Button } from "./ui/Button";
+import { Input } from "./ui/Input";
+import LargeHeading from "./ui/LargeHeading";
+import Paragraph from "./ui/Paragraph";
+import { toast } from "./ui/toast";
 
-const RequestApiKey = () => {
+interface RequestApiKeyProps {}
+
+const RequestApiKey: FC<RequestApiKeyProps> = ({}) => {
   const [isCreating, setIsCreating] = useState<boolean>(false);
   const [apiKey, setApiKey] = useState<string | null>(null);
 
@@ -23,12 +25,15 @@ const RequestApiKey = () => {
       setApiKey(generatedApiKey);
     } catch (err) {
       if (err instanceof Error) {
-        return toast({
+        toast({
           title: "Error",
           message: err.message,
           type: "error",
         });
+
+        return;
       }
+
       toast({
         title: "Error",
         message: "Something went wrong",
@@ -38,6 +43,7 @@ const RequestApiKey = () => {
       setIsCreating(false);
     }
   }
+
   return (
     <div className="container md:max-w-2xl">
       <div className="flex flex-col gap-6 items-center">
@@ -56,6 +62,7 @@ const RequestApiKey = () => {
           Your API key
         </label>
         <div className="relative rounded-md shadow-sm sm:min-w-0 sm:flex-1">
+          {/* Show a copy icon if API key was generated successfully */}
           {apiKey ? (
             <CopyButton
               className="absolute inset-y-0 right-0 animate-in fade-in duration-300"
